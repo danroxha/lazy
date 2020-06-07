@@ -44,38 +44,44 @@ fill_interval()
     done
 }
 
-fill_interval
+# fill_interval
+
+git_add()
+{
+    cd $repository          \
+    && date >> file.txt \
+    && git add .        \
+    && git commit -m "  
+        FAKE - $date    
+
+        Adding a fake commit git"  \
+        > /dev/null \
+    && echo "OK!"
+}
 
 
 
+#   CRIAR PASTA PARA O REPOSITORIO FAKE
+if ! [ -d "$path/$repository" ];
+then
+    mkdir $repository
+fi
 
-# #   CRIAR PASTA PARA O REPOSITORIO FAKE
-# if ! [ -d "$path/$repository" ];
-# then
-#     mkdir $repository
-# fi
+
+#   INICIAR REPOSITORIO
+if ! [ -d "$path/$repository/.git/" ];
+then
+    echo "Criado repositorio : '$repository' \r"
+    git init "$path/$repository/" > /dev/null
+fi
+
+git_add
+    # && git commit --amend --no-edit --date "$(date)" 
 
 
-# #   INICIAR REPOSITORIO
-# if ! [ -d "$path/$repository/.git/" ];
-# then
-#     echo "Criado repositorio : '$repository' \r"
-#     git init "$path/$repository/" > /dev/null
-# fi
 
-# cd $repository          \
-#     && date >> file.txt \
-#     && git add .        \
-#     && git commit -m "  
-#         FAKE - $date    
-
-#         Adding a fake commit git"  \
-#         > /dev/null \
-#     && git commit --amend --no-edit --date "$(date)" 
 
 
 # # git commit --amend --no-edit --date "$(date)"
 # # date --date="165 day ago" 
-
-
 # # git log --pretty=format:'' | wc -l
