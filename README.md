@@ -1,4 +1,5 @@
-# Lazy
+# :trollface: Lazy
+
 
 O script geral um repositório e o preenche com ***commits*** entre datas passadas por argumento
 
@@ -60,5 +61,12 @@ Agora finalize e suba o esse projeto do github e veja um milagre acontecer.
     -- "kkkkkkkkkkkkkkkkkkkk"
 
 
+##### Antes
+![ antes de subir o repositorio ](/screenshot/before.png)
+##### Depois
+![ antes de subir o repositorio ](/screenshot/after.png)
+
+
 Esse mini projeto me deu uma oportunidade de aprender mais sobre o git, comandos do linux e também das maravilhas que o shell script pode fazer sem muita complicação.
 
+O script pode ser melhorado e muito, pode ser colocado maior commits por dia, além que poder ser implementado um seção que trate a os dias que o dev não codou, só pra ficar mais realista.:wink:
