@@ -1,7 +1,9 @@
 #!/bin/sh
-# ./main.sh "from date" "to date"
-# ./main.sh "1 Nov 15" "1 Aug 20"
-# ./main.sh "1 Aug 20" "1 Nov 15"  
+# name: lazy
+# version: 0.0.1
+# author: Daniel Rocha  <danielrocha.d.silva@gmail.com>
+# describe: Commit generator
+# license: MIT
 
 LC_TIME=en_US.utf8
 
