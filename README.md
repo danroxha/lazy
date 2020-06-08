@@ -53,7 +53,7 @@ Exemplo:
 ```sh
 /lazy.sh "09 jun 2019" "07 jun 2020" "lazy-work"   
 ```
-Observe que a datas tem o seguinte padrão "**day** **mouth** **year**", são datas válidas esse padrão. O dia tem que ser um numero e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano pode ser passado com apenas os dois ultimos digitos ou completo. O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green".
+Observe que a datas tem o seguinte padrão "**day** **mouth** **year**". O dia tem que ser um numero e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano pode ser passado com apenas os dois ultimos digitos ou completo. O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green".
 
 Caso seja passado uma data errada, o script não funcionará corretamente, pois não possui um verificador de parametros.
 
@@ -61,7 +61,7 @@ Se você for muito doido, pode colocar o script em ```/usr/bin/``` e deixar glob
 
 ## Conclusão
 
-Após finalizar, suba o esse projeto do github e veja um milagre acontecer.
+Após finalizar a criação do repositório, suba o projeto para o github e veja um milagre acontecer.
     
     -- "kkkkkkkkkkkkkkkkkkkk"
 
