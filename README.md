@@ -1,3 +1,8 @@
+![](https://img.shields.io/github/license/dannrocha/lazy)
+![](https://img.shields.io/github/size/dannRocha/lazy/lazy.sh)
+![](https://img.shields.io/github/last-commit/dannRocha/lazy)
+![](https://img.shields.io/badge/daniel%20rocha-dev-green)
+
 # :trollface: Lazy
 
 
