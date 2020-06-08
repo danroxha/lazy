@@ -1,7 +1,7 @@
 # :trollface: Lazy
 
 
-O script geral um repositório e o preenche com ***commits*** entre datas passadas por argumento
+O script gera um repositório e o preenche com ***commits*** entre datas passadas por argumento
 
 ## Porquê?
 
