@@ -39,6 +39,7 @@ git_add()
 {
     
     cd "$path/$repository/"         \
+    && touch -d "$from" .gitignore  \
     && date >> file.txt             \
     && git add .                    \
     && git commit -m "  
