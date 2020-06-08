@@ -1,7 +1,7 @@
 # :trollface: Lazy
 
-
 O script gera um repositório e o preenche com ***commits*** entre datas passadas por argumento
+![](screenshot/logo.png)
 
 ## Porquê?
 
