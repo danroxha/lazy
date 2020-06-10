@@ -5,6 +5,8 @@
 
 # :trollface: Lazy
 
+**Artigo:** [Deixando suas contribuições "verde"](https://dev.to/dannrocha/deixando-o-suas-contribuicoes-verde-55ml)
+
 O script gera um repositório e o preenche com ***commits*** entre datas passadas por argumento
 ![](screenshot/logo.png)
 
@@ -26,8 +28,9 @@ Só funciona em um interpretador shell script
 *   ***git***: é um sistema de controle de versão distribuído de código
 *   ***date*** : comando de data
 *   ***touch***: comando para criação de arquivos
+*   ***cut***: manipulador de string
 
-Acho que é normal o ***date*** e ***touch*** já vi pré-instalado em distro linux, mas fica a observação
+Acho que é normal o ***date***, ***touch*** e ***cut*** já vêm pré-instalado em distro linux, mas fica a observação
 
 #### Obtendo o repositório
 
@@ -58,7 +61,7 @@ Pra ficar mais **realista** use o parâmetro ***-s***.
 /lazy.sh -s "09 jun 2019" "07 jun 2020" "lazy-work"   
 ``` 
 
-Observe que as datas tem o seguinte padrão "**day** **month** **year**". O dia tem que ser um número e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano pode ser passado com apenas os dois ultimos digitos ou completo. O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green". Há mais opções no script, você pode verificar passando o parâmetro ***--help*** ou ***-h***.
+Observe que as datas tem o seguinte padrão "**day** **month** **year**". O dia tem que ser um número e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano tem que ser passado completo ( 2020 ). O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green". Há mais opções no script, você pode verificar passando o parâmetro ***--help*** ou ***-h***.
 
 
 
