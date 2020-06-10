@@ -53,11 +53,20 @@ Exemplo:
 ```sh
 /lazy.sh "09 jun 2019" "07 jun 2020" "lazy-work"   
 ```
-Observe que a datas tem o seguinte padrão "**day** **month** **year**". O dia tem que ser um número e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano pode ser passado com apenas os dois ultimos digitos ou completo. O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green".
+Pra ficar mais **realista** use o parâmetro ***-s***. 
+```sh
+/lazy.sh -s "09 jun 2019" "07 jun 2020" "lazy-work"   
+``` 
 
-Caso seja passado uma data errada, o script não funcionará corretamente, pois não possui um verificador de parâmetros.
+Observe que as datas tem o seguinte padrão "**day** **month** **year**". O dia tem que ser um número e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano pode ser passado com apenas os dois ultimos digitos ou completo. O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green". Há mais opções no script, você pode verificar passando o parâmetro ***--help*** ou ***-h***.
 
-Se você for muito doido, pode colocar o script em ```/usr/bin/``` e deixar global no sistema.
+
+
+Se você for muito doido, pode deixar o script global no sistema.
+
+```sh
+./lazy --install or ./lazy -i
+```
 
 ## Conclusão
 
@@ -66,12 +75,13 @@ Após finalizar a criação do repositório, suba o projeto para o github e veja
     -- "kkkkkkkkkkkkkkkkkkkk"
 
 
-##### Antes
+#### Antes
 ![ antes de subir o repositorio ](/screenshot/before.png)
-##### Depois
-![ antes de subir o repositorio ](/screenshot/after.png)
+#### Depois
+![ depois de subir o repositorio ](/screenshot/after.png)
 
+#### Com o parâmetro *-s*
+![ depois de subir o repositorio ](/screenshot/realist.png)
 
 Esse mini projeto me deu uma oportunidade de aprender mais sobre o git, comandos do linux e também das maravilhas que o shell script(que nunca usei antes) pode fazer sem muita complicação (primeiro automação).
 
-O script pode ser melhorado e muito, pode ser colocado mais commits por dia, além que poder ser implementado um seção que trate os dias que o dev não codou, só pra ficar mais realista.:wink:
