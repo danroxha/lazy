@@ -1,6 +1,6 @@
 #!/bin/sh
 # name: lazy
-# version: 0.0.1
+# version: 0.0.2
 # author: Daniel Rocha  <danielrocha.d.silva@gmail.com>
 # describe: Commit generator
 # license: MIT
@@ -9,11 +9,37 @@ LC_TIME=en_US.utf8
 
     repository="green"
     path=$(pwd)
-    date=$(date)
+
     main_file="file.txt"
+    shuffler=false
+    total_commits=0
     
-    from=$1
-    to=$2
+    from=""
+    to=""
+    version="0.0.2"
+
+
+checar_parametros()
+{
+
+    date_one=$1
+    date_two=$2
+    repository_name=$3
+
+    if ! [ -z $3 ];
+    then
+        repository="$repository_name"
+    fi
+
+
+    if [ -z "$date_one" ] || [ -z "$date_two" ];
+    then
+        echo "$_message"
+        exit 1
+    fi
+
+}
+
 
 datediff() 
 {
@@ -32,13 +58,54 @@ datediff()
 add_commit()
 {
     commit_date=$1
-                        
-   cd "$path/$repository/"                  \
-    && date >> "$main_file"                 \
-    && git add .                            \
-    && git commit -m "FAKE - $commit_date"  \
-       --date "$commit_date" > /dev/null
-     
+
+
+    __shuffler()
+    {   
+    
+        nsec=$(date +%N)
+        percent=8
+        number_commit=$(echo $(date +%N) | cut -b 3)
+        # Simulate days when "DEV" didn't code
+        if [ $number_commit -gt $percent ] || [ $number_commit -eq 0 ]; then
+            return
+        fi
+
+        
+        inter=0
+        while [ $inter -le $number_commit ]
+        do
+
+            inter=$(( inter + 1 ))
+
+            total_commits=$(( total_commits + 1 ))
+            cd "$path/$repository/"                 \
+            && date >> "$main_file"                 \
+            && git add .  > /dev/null               \
+            && git commit -m "$number_commit FAKE - $commit_date"  \
+            --date "$commit_date" > /dev/null \
+            
+        done
+            cd "$path/$repository/"                 \
+            && git gc --quiet 
+
+    }
+
+    __default()
+    {
+        cd "$path/$repository/"                 \
+        && date >> "$main_file"                 \
+        && git add .                            \
+        && git commit -m "FAKE - $commit_date"  \
+        --date "$commit_date" > /dev/null
+    }
+
+    
+    case $shuffler in
+     true ) __shuffler ;;
+     false) __default  ;;
+    esac
+
 }
 
 
@@ -69,40 +136,108 @@ EOF
 )
 
 _help=$(cat << EOF
- Usage: ./lazy.sh <date from> <date to> <repository-name>
-    options    
-        --help\t | -h : display this help and exit
-        --global | -g : make available throughout the system
-        --remove | -r : remove from the system
-        --version
+    NAME
+        lazy - generator commit
+    
+    
+    SYNOPSIS
         
-            date: '1 Nov 15' day, month, year
-        
+        lazy.sh <date from> <date to> <repository-name>
+        or
+        lazy.sh -s <date from> <date to> <repository-name>
+
+
+    DESCRIPTION
+
+        The script generates a repository and populates it with
+        commits between dates passed by argument. By default the
+        repository is generated with a commit per day between the
+        dates passed by arguments, with the default name of 'green'.
+
+
+    OPTIONS
+
+        --help     | -h : display this help and exit
+        --install  | -g : make available throughout the system
+        --uninstall| -r : remove from the system
+        --version  | -v : show version
+        --shuffler | -s : shuffler days and amount of commit
+
+    EXEMPLE
+
+        date: '1 Nov 15' day=number; month=string; year=number
+         --> valid dates
+            * "day month year"
+            * "month day year"
+            * "year day month"
+
+            Example:
+                "november 01 2015" or "nov 01 2015"
+
         Example:
             $ ./lazy.sh "1 Nov 20" "20 Nov 19" "sleep-project"
+            $ ./lazy.sh -s "1 Nov 20" "20 Nov 19" "sleep-project"
 
 EOF
 )
+    show_version()
+    {
+        echo "Version: $version"
+        exit 0
+    }
+
+
+    show_help()
+    {
+        echo "$_help" | less
+        exit 0
+    }
+
+
+    install_lazy()
+    {
+        echo "- installing 'lazy' ..."
+        sudo cp "$path"/lazy.sh /usr/bin/lazy
+        echo "for uninstall:\n\t$ lazy -u or lazy --uninstall"
+        exit 0
+    }
+
+
+    uninstall_lazy()
+    {
+        echo "- uninstalling 'lazy'"
+        sudo rm /usr/bin/lazy 
+        echo "- Finished"
+        exit 0
+    }
+
+
+    case $1 in
+        "--help"     | "-h") show_help      ;;
+        "--version"  | "-v") show_version   ;;
+        "--install"  | "-i") install_lazy   ;;
+        "--uninstall"| "-u") uninstall_lazy ;;
+        "--shuffler" | "-s") shuffler=true 
+            
+            from="$2"
+            to="$3"
+            
+            if ! [ -z $4 ];
+            then
+                repository="$4"
+            fi
+
+            if [ -z "$2" ] || [ -z "$3" ];
+            then
+                echo "$_message"
+                exit 1
+            fi
+        
+            return
+        ;;
+    esac
     
-    if [ "$1" = "--help" ] || [ "$1" = "-h" ];
-    then
-        echo "$_help"
-        exit 0
-    fi
 
-    if [ "$1" = "--global" ] || [ "$1" = "-g" ];
-    then
-        echo "Adicionando"
-        exit 0
-    fi
-
-    if [ "$1" = "--remove" ] || [ "$1" = "-r" ];
-    then
-        echo "Removendo"
-        exit 0
-    fi
-
-    # Renomear repositorio
     if ! [ -z $3 ];
     then
         repository="$3"
@@ -133,12 +268,13 @@ fill_interval()
         exit 1
     fi
 
-
-    echo ">> Processing ..."
     
     interator=0
     while [ $interator -le $days ]
     do
+ 
+        echo -n "\r>> Processing $(( interator * 100 / days))%"
+
         interator=$(( interator + 1 ))
         commit_date=$(date -d "$from $interator days" +%a' '%b' '%d' '%H:%M:%S' '%Y' '%z)  
         add_commit "$commit_date"
@@ -146,10 +282,10 @@ fill_interval()
 
     echo ">> Finished"
     echo ">> Generated repository from: '$from' to: '$to':"
-    echo "   Report:\n\tDays:    $days\n\tCommits: $interator\n"
+    echo "   Report:\n\tDays:    $days\n\tCommits: $total_commits\n"
     echo "   Path repository: $path/$repository\n"
 }
 
-handle_input "$1" "$2" "$3"
+handle_input "$1" "$2" "$3" "$4"
 create_repository "$from"
 fill_interval "$from" "$to"
