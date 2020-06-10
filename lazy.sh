@@ -2,7 +2,8 @@
 # name: lazy
 # version: 0.0.2
 # author: Daniel Rocha  <danielrocha.d.silva@gmail.com>
-# describe: Commit generator
+# repository: https://github.com/dannRocha/lazy/
+# description: Commit generator
 # license: MIT
 
 LC_TIME=en_US.utf8
@@ -72,6 +73,9 @@ add_commit()
 
     __default()
     {
+
+        total_commits=$(( total_commits + 1 ))
+
         cd "$path/$repository/"                 \
         && date >> "$main_file"                 \
         && git add .                            \
