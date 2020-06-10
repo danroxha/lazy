@@ -30,7 +30,7 @@ Só funciona em um interpretador shell script
 *   ***touch***: comando para criação de arquivos
 *   ***cut***: manipulador de string
 
-Acho que é normal o ***date***, ***touch*** e ***cut*** já vêm pré-instalado em distro linux, mas fica a observação
+Acho que é normal o ***date***, ***touch*** e ***cut*** já esteja pré-instalado em distro linux, mas fica a observação
 
 #### Obtendo o repositório
 
