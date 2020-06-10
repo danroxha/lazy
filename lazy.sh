@@ -19,27 +19,6 @@ LC_TIME=en_US.utf8
     version="0.0.2"
 
 
-checar_parametros()
-{
-
-    date_one=$1
-    date_two=$2
-    repository_name=$3
-
-    if ! [ -z $3 ];
-    then
-        repository="$repository_name"
-    fi
-
-
-    if [ -z "$date_one" ] || [ -z "$date_two" ];
-    then
-        echo "$_message"
-        exit 1
-    fi
-
-}
-
 
 datediff() 
 {
@@ -235,21 +214,25 @@ EOF
         
             return
         ;;
+        * ) ;;
     esac
     
+
+    from="$1"
+    to="$2"
 
     if ! [ -z $3 ];
     then
         repository="$3"
     fi
 
+    # echo "P1: $1 P2: $2"
 
     if [ -z "$1" ] || [ -z "$2" ];
     then
         echo "$_message"
         exit 1
     fi
-
 }
 
 
@@ -280,7 +263,7 @@ fill_interval()
         add_commit "$commit_date"
     done
 
-    echo ">> Finished"
+    echo "\n>> Finished"
     echo ">> Generated repository from: '$from' to: '$to':"
     echo "   Report:\n\tDays:    $days\n\tCommits: $total_commits\n"
     echo "   Path repository: $path/$repository\n"
