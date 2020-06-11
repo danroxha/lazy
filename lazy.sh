@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # name: lazy
 # version: 0.0.2
 # author: Daniel Rocha  <danielrocha.d.silva@gmail.com>
@@ -46,6 +46,7 @@ add_commit()
         nsec=$(date +%N)
         percent=8
         number_commit=$(echo $(date +%N) | cut -b 3)
+
         # Simulate days when "DEV" didn't code
         if [ $number_commit -gt $percent ] || [ $number_commit -eq 0 ]; then
             return
@@ -57,8 +58,8 @@ add_commit()
         do
 
             inter=$(( inter + 1 ))
-
             total_commits=$(( total_commits + 1 ))
+
             cd "$path/$repository/"                 \
             && date >> "$main_file"                 \
             && git add .  > /dev/null               \
