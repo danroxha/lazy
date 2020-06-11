@@ -54,11 +54,11 @@ Agora vamos criar nosso repositório. Na pasta do script chame o com os seguinte
 ```
 Exemplo:
 ```sh
-/lazy.sh "09 jun 2019" "07 jun 2020" "lazy-work"   
+./lazy.sh "09 jun 2019" "07 jun 2020" "lazy-work"   
 ```
 Pra ficar mais **realista** use o parâmetro ***-s***. 
 ```sh
-/lazy.sh -s "09 jun 2019" "07 jun 2020" "lazy-work"   
+./lazy.sh -s "09 jun 2019" "07 jun 2020" "lazy-work"   
 ``` 
 
 Observe que as datas tem o seguinte padrão "**day** **month** **year**". O dia tem que ser um número e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano tem que ser passado completo ( 2020 ). O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green". Há mais opções no script, você pode verificar passando o parâmetro ***--help*** ou ***-h***.
