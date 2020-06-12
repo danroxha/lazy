@@ -72,6 +72,7 @@ add_commit()
 
     }
 
+
     __default()
     {
 
@@ -82,6 +83,7 @@ add_commit()
         && git add .                            \
         && git commit -m "FAKE - $commit_date"  \
         --date "$commit_date" > /dev/null
+
     }
 
     
@@ -180,18 +182,18 @@ EOF
 
     install_lazy()
     {
-        echo "- installing 'lazy' ..."
+        echo "\033[1;32m- installing 'lazy' ...\033[0;0m"
         sudo cp "$path"/lazy.sh /usr/bin/lazy
-        echo "for uninstall:\n\t$ lazy -u or lazy --uninstall"
+        echo "\033[1;33mfor uninstall:\n\t$ lazy -u or lazy --uninstall\033[0;0m"
         exit 0
     }
 
 
     uninstall_lazy()
     {
-        echo "- uninstalling 'lazy'"
+        echo "\033[1;33m- uninstalling 'lazy'"
         sudo rm /usr/bin/lazy 
-        echo "- Finished"
+        echo "\033[1;32m- Finished\033[0;0m"
         exit 0
     }
 
@@ -202,14 +204,17 @@ EOF
         "--install"  | "-i") install_lazy   ;;
         "--uninstall"| "-u") uninstall_lazy ;;
         "--shuffler" | "-s") shuffler=true 
+
             
             from="$2"
             to="$3"
+
             
             if ! [ -z $4 ];
             then
                 repository="$4"
             fi
+
 
             if [ -z "$2" ] || [ -z "$3" ];
             then
@@ -226,12 +231,12 @@ EOF
     from="$1"
     to="$2"
 
+
     if ! [ -z $3 ];
     then
         repository="$3"
     fi
 
-    # echo "P1: $1 P2: $2"
 
     if [ -z "$1" ] || [ -z "$2" ];
     then
@@ -252,7 +257,7 @@ fill_interval()
 
     if [ $days -le  0 ];
     then
-        echo "Dates must be 'from': past 'to': future\n\tUse: ./lazy -h\n"
+        echo "\033[1;31mDates must be 'from'\033[0;0m: \033[;7m past \033[0;0m \033[1;31m'to'\033[0;0m: \033[;7m future \033[0;0m\n\t\033[1;33mUse: ./lazy -h\033[0;0m\n"
         exit 1
     fi
 
@@ -261,17 +266,18 @@ fill_interval()
     while [ $interator -le $days ]
     do
  
-        echo -n "\r>> Processing $(( interator * 100 / days))%"
+        echo -n "\r>> \033[;1mProcessing \033[0;0m$(( interator * 100 / days))%"
 
         interator=$(( interator + 1 ))
         commit_date=$(date -d "$from $interator days" +%a' '%b' '%d' '%H:%M:%S' '%Y' '%z)  
         add_commit "$commit_date"
+        
     done
 
-    echo "\n>> Finished"
-    echo ">> Generated repository from: '$from' to: '$to':"
-    echo "   Report:\n\tDays:    $days\n\tCommits: $total_commits\n"
-    echo "   Path repository: $path/$repository\n"
+    echo "\n>> \033[;1mFinished"
+    echo ">> \033[;1mGenerated repository from: \033[;7m$from\033[0;0m \033[;1mto:\033[0;0m \033[;7m$to\033[0;0m"
+    echo "   \033[1;33mReport:\n\tDays:    $days\n\tCommits: $total_commits\n\033[0;0m"
+    echo "   \033[;1mPath repository:\033[0;0m \033[;7m$path/$repository\033[0;0m\n"
 }
 
 handle_input "$1" "$2" "$3" "$4"
