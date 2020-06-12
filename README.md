@@ -63,7 +63,7 @@ Pra ficar mais **realista** use o parâmetro ***-s***.
 
 Observe que as datas tem o seguinte padrão "**day** **month** **year**". O dia tem que ser um número e um dia existente, o mês tem que ser passado por extenso ou com abreviação em inglês, e o ano tem que ser passado completo ( 2020 ). O nome do repositório é opcional, caso não seja passado um nome, o repositório é nomeado como "green". Há mais opções no script, você pode verificar passando o parâmetro ***--help*** ou ***-h***.
 
-
+![Script em execução](screenshot/run.gif)
 
 Se você for muito doido, pode deixar o script global no sistema.
 
