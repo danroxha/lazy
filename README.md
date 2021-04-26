@@ -86,5 +86,4 @@ Após finalizar a criação do repositório, suba o projeto para o github e veja
 #### Com o parâmetro *-s*
 ![ depois de subir o repositorio ](screenshot/realist.png)
 
-Esse mini projeto me deu uma oportunidade de aprender mais sobre o git, comandos do linux e também das maravilhas que o shell script(que nunca usei antes) pode fazer sem muita complicação (primeiro automação).
 
