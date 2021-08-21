@@ -17,7 +17,7 @@ Mais um dia se passava e eu estava ouvindo alguns podcasts BR de desenvolvimento
     -- Eu fazendo "nada", pensei (...), 
     -- UHHHUMMMMMMMM!, porquê não?
 
-E assim surgiu esse script, meio incompleto, que gera um falso trabalho entre um período determinado pelo usuário.
+E assim surgiu esse script, que gera um falso trabalho entre um período determinado pelo usuário.
 
 
 ## Modo de uso
@@ -30,7 +30,7 @@ Só funciona em um interpretador shell script
 *   ***touch***: comando para criação de arquivos
 *   ***cut***: manipulador de string
 
-Acho que é normal o ***date***, ***touch*** e ***cut*** já esteja pré-instalado em distro linux, mas fica a observação
+Acho que é normal que os programas ***date***, ***touch*** e ***cut*** já esteja pré-instalado em distro linux, mas fica a observação.
 
 #### Obtendo o repositório
 
@@ -39,11 +39,12 @@ Clonando o repositório
 git clone git@github.com:dannRocha/lazy.git
 ```
 
-Ou você pode copia a raw do script, baixar compactado, você escolhe o meio de obter o script
+Ou você pode copia a raw do script, baixar compactado, você escolhe o meio de obter o script.
 
 #### Gerando repositório "falso"
 
-Antes de iniciar o script dê permissão de execução
+Antes de iniciar o script dê permissão de execução:
+* OBS: Não execute qualquer script que encontrar por aí, leia o código fonte e verifique se objetivo do script é o mesmo o que se diz ser.
 ```sh
 chmod +x lazy.sh
 ```
@@ -85,5 +86,10 @@ Após finalizar a criação do repositório, suba o projeto para o github e veja
 
 #### Com o parâmetro *-s*
 ![ depois de subir o repositorio ](screenshot/realist.png)
+
+Poderia melhorar e muito o script, mas só queria saber se conseguiria escrever o script mencionado no podcast. ***OBS***: Não tinha qualquer conhecimento prévio de Shell Script.
+
+    -- Não faça 'traquinagem' para enganar outras pessoas. 
+    By: Aquele que fez a traquinagem.  kkkkkkkkkkkkkkkk
 
 
