@@ -67,8 +67,11 @@ add_commit()
             --date "$commit_date" > /dev/null \
             
         done
-            cd "$path/$repository/"                 \
-            && git gc --quiet 
+        
+        echo "Last commit $(date)" > $main_file
+        
+        cd "$path/$repository/"                 \
+        && git gc --quiet 
 
     }
 
