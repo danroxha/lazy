@@ -193,8 +193,6 @@ EOF
 
         sudo --version $1 &> /dev/null;
 
-        echo "\033[1;32m- installing 'lazy' ...\033[0;0m"
-
         if [ $? -eq 0 ]; then
             sudo cp "$path"/lazy.sh /usr/bin/lazy ;
         else
