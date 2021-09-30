@@ -182,18 +182,50 @@ EOF
 
     install_lazy()
     {
+        lazy --version $1 &> /dev/null
+
+        if [ $? -eq 0 ]; then
+            echo -e "\033[1;33m- lazy's installed\033[0;0m"
+            exit 0
+        fi
+
+        echo -e "\033[1;32m- installing 'lazy' ...\033[0;0m"
+
+        sudo --version $1 &> /dev/null;
+
         echo "\033[1;32m- installing 'lazy' ...\033[0;0m"
-        sudo cp "$path"/lazy.sh /usr/bin/lazy
-        echo "\033[1;33mfor uninstall:\n\t$ lazy -u or lazy --uninstall\033[0;0m"
+
+        if [ $? -eq 0 ]; then
+            sudo cp "$path"/lazy.sh /usr/bin/lazy ;
+        else
+            cp "$path"/lazy.sh /usr/bin/lazy ;
+        fi
+
+        echo -e "\033[1;33mfor uninstall:\n\t$ lazy -u or lazy --uninstall\033[0;0m"
         exit 0
     }
 
 
     uninstall_lazy()
     {
-        echo "\033[1;33m- uninstalling 'lazy'"
-        sudo rm /usr/bin/lazy 
-        echo "\033[1;32m- Finished\033[0;0m"
+        lazy --version $1 &> /dev/null
+
+        if [ $? -ne 0 ]; then
+            echo -e "\033[1;33m- lazy not installed\033[0;0m"
+            exit 0
+        fi
+
+        echo -e "\033[1;33m- uninstalling 'lazy'"
+
+        sudo --version $1 &> /dev/null
+
+        if [ $? -eq 0 ]; then
+            sudo rm /usr/bin/lazy ;
+        else
+            rm /usr/bin/lazy ;
+        fi
+
+        echo -e "\033[1;32m- Finished\033[0;0m"
         exit 0
     }
 
