@@ -6,7 +6,7 @@
 # description: Commit generator
 # license: MIT
 
-LC_TIME=en_US.utf8
+export LC_TIME=en_US.utf8
 
     repository="green"
     path=$(pwd)
