@@ -168,7 +168,7 @@ EOF
 )
     show_version()
     {
-        echo "Version: $version"
+        echo "lazy version $version"
         exit 0
     }
 
@@ -257,7 +257,7 @@ fill_interval()
 
     if [ $days -le  0 ];
     then
-        echo "\033[1;31mDates must be 'from'\033[0;0m: \033[;7m past \033[0;0m \033[1;31m'to'\033[0;0m: \033[;7m future \033[0;0m\n\t\033[1;33mUse: ./lazy -h\033[0;0m\n"
+        echo -e "\033[1;31mDates must be 'from'\033[0;0m: \033[;7m past \033[0;0m \033[1;31m'to'\033[0;0m: \033[;7m future \033[0;0m\n\t\033[1;33mUse: ./lazy -h\033[0;0m\n"
         exit 1
     fi
 
@@ -266,7 +266,7 @@ fill_interval()
     while [ $interator -le $days ]
     do
  
-        echo -n "\r>> \033[;1mProcessing \033[0;0m$(( interator * 100 / days))%"
+        echo -e -n "\r>> \033[;1mProcessing \033[0;0m$(( interator * 100 / days))%"
 
         interator=$(( interator + 1 ))
         commit_date=$(date -d "$from $interator days" +%a' '%b' '%d' '%H:%M:%S' '%Y' '%z)  
@@ -274,10 +274,10 @@ fill_interval()
         
     done
 
-    echo "\n>> \033[;1mFinished"
-    echo ">> \033[;1mGenerated repository from: \033[;7m$from\033[0;0m \033[;1mto:\033[0;0m \033[;7m$to\033[0;0m"
-    echo "   \033[1;33mReport:\n\tDays:    $days\n\tCommits: $total_commits\n\033[0;0m"
-    echo "   \033[;1mPath repository:\033[0;0m \033[;7m$path/$repository\033[0;0m\n"
+    echo -e "\n>> \033[;1mFinished"
+    echo -e ">> \033[;1mGenerated repository from: \033[;7m$from\033[0;0m \033[;1mto:\033[0;0m \033[;7m$to\033[0;0m"
+    echo -e "   \033[1;33mReport:\n\tDays:    $days\n\tCommits: $total_commits\n\033[0;0m"
+    echo -e "   \033[;1mPath repository:\033[0;0m \033[;7m$path/$repository\033[0;0m\n"
 }
 
 handle_input "$1" "$2" "$3" "$4"
