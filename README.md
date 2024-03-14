@@ -3,10 +3,10 @@
 ![](https://img.shields.io/github/last-commit/dannRocha/lazy)
 ![](https://img.shields.io/badge/daniel%20rocha-dev-green)
 
-# ⚠️ DEPRECATED
+<!-- # ⚠️ DEPRECATED
 
 # GITHUB MUDOU A ESTRATÉGIA DE RASTRAMENTO DE CONTRIBUIÇÕES (QUADRO VERDE), ESSE SCRIPT NÃO POSSUI SUPORTE PARA VERSÕES MAIS RECENTES DO GITHUB. 
-
+-->
 # :trollface: Lazy
 
 **Artigo:** [Deixando suas contribuições "verde"](https://dev.to/dannrocha/deixando-o-suas-contribuicoes-verde-55ml)
